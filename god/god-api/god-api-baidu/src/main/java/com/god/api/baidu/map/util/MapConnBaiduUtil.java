@@ -1,4 +1,4 @@
-package com.god.common.util.http;
+package com.god.api.baidu.map.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -18,8 +18,6 @@ import java.net.URLConnection;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 
 /**
  * Java原生的API可用于发送HTTP请求，即java.net.URL、java.net.URLConnection，这些API很好用、很常用，
@@ -31,7 +29,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author H__D
  *
  */
-public class HttpConnectionUtil {
+public class MapConnBaiduUtil {
 
 	// post请求
 	public static final String HTTP_POST = "POST";
@@ -589,11 +587,15 @@ public class HttpConnectionUtil {
 	}
 
 	public static void main(String[] args) {
-		String str = "";
-		System.out.println(getMethod("http://wwww.baidu.com", str ));
+		// 请求测试   
+		String str = "{mobile:15118003902, 'password': '123456', code:189161, deviceCode: 123456, lastLoginDevice:1, jpushId:654321}";
+		
+		
+		System.out.println(postMethod("http://120.76.103.76:8282/app/login/doLogin", str ));
 
 		// 上传文件测试
-		//String str = uploadFile("http://localhost:8080/app/img/uploadImage",new String[] { "C:/Users/H__D/Desktop/IMG_0109.JPG","C:/Users/H__D/Desktop/IMG_0109.JPG" });
+		// {"hasError":false,"errorMessage":null,"dataMap":{"name":"123.jpg","msg":"上传成功","url":"http://120.76.103.76:8080/images/20161222/20161222120211_952.jpg"}}
+		//String str = uploadFile("http://app.singmon.cn/app/img/uploadImageTaskWorkBatch",new String[] { "C:/Users/H__D/Desktop/IMG_0109.JPG","C:/Users/H__D/Desktop/IMG_0109.JPG" });
 		//System.out.println(str);
 
 		// 下载文件测试 

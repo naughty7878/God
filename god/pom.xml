@@ -9,18 +9,145 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>god-common</module>
+		<module>god-api</module>
+		<module>god-web</module>
+		<module>god-service</module>
+		<module>god-dao</module>
+		<module>god-domain</module>
+		<module>god-test</module>
 	</modules>
 
 	<properties>
+		<!-- God -->
+		<god.dao.base.version>1.0-SNAPSHOT</god.dao.base.version>
+		<god.domain.base.version>1.0-SNAPSHOT</god.domain.base.version>
+
+		<!-- Spring -->
+		<spring.version>5.1.3.RELEASE</spring.version>
+
+		<!-- HttpClient -->
+		<httpclient.version>4.5</httpclient.version>
+		<httpcore.version>4.4.4</httpcore.version>
+
 		<!-- Servlet -->
 		<servlet.version>3.0.1</servlet.version>
+		<!-- JSP -->
 		<jsp-api.version>2.2</jsp-api.version>
 
+		<!-- Mybatis -->
+		<mybatis.version>3.4.6</mybatis.version>
+		<mybatis-spring.version>1.3.2</mybatis-spring.version>
+
+		<!-- DB -->
+		<!-- mysql -->
+		<mysql.version>8.0.13</mysql.version>
+
+		<!-- Tool -->
+		<!-- jackson json包 -->
+		<jackson-databind.version>2.9.6</jackson-databind.version>
+		<jackson-core.version>2.9.6</jackson-core.version>
+		<jackson-annotations.version>2.9.6</jackson-annotations.version>
+
+		<!-- Log -->
+		<!-- logbakc -->
+		<slf4j-api.version>1.7.5</slf4j-api.version>
+		<logback.version>1.2.3</logback.version>
+
+		<!-- Test -->
+		<!-- Junit依赖 -->
+		<junit.version>4.12</junit.version>
+
+
+		<!-- config -->
+		<!-- 项目构建编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- maven编译插件版本 -->
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<!-- jdk 版本 -->
+		<jdk.version>1.8</jdk.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- God -->
+			<dependency>
+				<groupId>com.god</groupId>
+				<artifactId>god-dao-base</artifactId>
+				<version>${god.dao.base.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.god</groupId>
+				<artifactId>god-domain-base</artifactId>
+				<version>${god.domain.base.version}</version>
+			</dependency>
+
+
+			<!-- Spring -->
+			<!-- Spring框架基本的核心工具类 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- IoC 操作相关的所有类 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- AOP特性时所需的类 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Spring ApplicationContext特性时所需的全部类 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+			</dependency>
+
+			<!-- HttpClient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore</artifactId>
+				<version>${httpcore.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpmime</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
 
 			<!-- Servlet -->
 			<dependency>
@@ -29,7 +156,8 @@
 				<version>${servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
-			
+
+			<!-- JSP -->
 			<dependency>
 				<groupId>javax.servlet.jsp</groupId>
 				<artifactId>jsp-api</artifactId>
@@ -37,12 +165,111 @@
 				<scope>provided</scope>
 			</dependency>
 
+
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>${jsp-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Mybatis -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+			</dependency>
+
+			<!-- db -->
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!-- tool -->
+			<!-- jackson json包 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson-databind.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson-core.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>${jackson-annotations.version}</version>
+			</dependency>
+
+			<!-- log -->
+			<!-- logbakc -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j-api.version}</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-access</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<!-- test -->
+			<!-- junit依赖 -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>3.8.1</version>
+				<version>${junit.version}</version>
 				<scope>test</scope>
 			</dependency>
+
+
 		</dependencies>
 	</dependencyManagement>
+
+
+	<build>
+		<plugins>
+			<!-- define the project compile level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

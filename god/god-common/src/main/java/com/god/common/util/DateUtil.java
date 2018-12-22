@@ -57,7 +57,6 @@ public class DateUtil {
 		try {
 			return format.parse(source);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -109,8 +108,13 @@ public class DateUtil {
 	 */
 	public static Date getMonthBeginDate(Date date) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(getDayBeginDate(date));
+		calendar.setTime(date);
 
+		// 设置 时/分/秒/毫秒 为0
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);	
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
 
 		return calendar.getTime();
@@ -140,9 +144,15 @@ public class DateUtil {
 	 */
 	public static Date getYearBeginDate(Date date) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(getMonthBeginDate(date));
+		calendar.setTime(date);
 
-		calendar.set(Calendar.MONTH, 1);
+		// 设置 时/分/秒/毫秒 为0
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);	
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.MONTH, 0);
 
 		return calendar.getTime();
 	}
@@ -155,16 +165,60 @@ public class DateUtil {
 	 */
 	public static Date getYearEndDate(Date date) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(getMonthEndDate(date));
+		calendar.setTime(getYearBeginDate(date));
 
-		calendar.set(Calendar.MONTH, 11);
+		calendar.add(Calendar.YEAR, 1);
+		calendar.add(Calendar.MILLISECOND, -1);
 
 		return calendar.getTime();
 	}
 
+	
+	/**
+	 * 获取2个时间之间相差的天数
+	 * 1、与时分秒无关
+	 * 2、可以为负数
+	 * 3、同一天时：返回0
+	 * 
+	 * @param beginDate
+	 * @param endDate
+	 * @return
+	 */
+	public static int getDayNumber(Date beginDate, Date endDate) {
+		Calendar beginCal = Calendar.getInstance();
+		beginCal.setTime(beginDate);
+		beginCal.set(Calendar.HOUR_OF_DAY, 0);
+		beginCal.set(Calendar.MINUTE, 0);
+		beginCal.set(Calendar.SECOND, 0);
+		beginCal.set(Calendar.MILLISECOND, 0);
+		
+		Calendar endCal = Calendar.getInstance();
+		endCal.setTime(endDate);
+		endCal.set(Calendar.HOUR_OF_DAY, 0);
+		endCal.set(Calendar.MINUTE, 0);
+		endCal.set(Calendar.SECOND, 0);
+		endCal.set(Calendar.MILLISECOND, 0);
+		
+		long beginTime = beginCal.getTime().getTime();
+		long endTime = endCal.getTime().getTime();
+		
+		return (int)((endTime - beginTime) * 1.0 / (1000 * 60 * 60 * 24));
+	}
+	
+	
 	public static void main(String[] args) {
-		System.out.println(DateUtil.getYearBeginDate(new Date()));
-
+		Date date1 = stringToDate("1999-12-02 00:11:11", STRING_DATE_FORMAT);
+		Date date2 = stringToDate("1999-12-03 00:12:11", STRING_DATE_FORMAT);
+		
+		System.out.println(dateToString(getDayBeginDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		System.out.println(dateToString(getDayEndDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		System.out.println(dateToString(getMonthBeginDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		System.out.println(dateToString(getMonthEndDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		System.out.println(dateToString(getYearBeginDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		System.out.println(dateToString(getYearEndDate(date1), "yyyy-MM-dd HH:mm:ss:SSS"));
+		
+		
+		System.out.println(getDayNumber(date1, date2));
 	}
 
 }
