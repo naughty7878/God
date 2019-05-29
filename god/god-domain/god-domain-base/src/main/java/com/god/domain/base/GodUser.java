@@ -1,66 +1,53 @@
 package com.god.domain.base;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class GodUser {
+public class GodUser implements Serializable{
+    private Integer id;
 
-	/**
-	 * ID
-	 */
-	private Integer id;
-	
-	/**
-	 * 名称
-	 */
-	private String name;
-	
-	/**
-	 * 创建时间
-	 */
-	private Date createTime;
+    private String name;
 
-	/**
-	 * 更新时间
-	 */
-	private Date updateTime;
+    private Date createTime;
 
-	public Integer getId() {
-		return id;
-	}
+    private Date updateTime;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
 	@Override
 	public String toString() {
 		return "GodUser [id=" + id + ", name=" + name + ", createTime=" + createTime + ", updateTime=" + updateTime
 				+ "]";
 	}
-	
-	
+    
 }

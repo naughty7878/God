@@ -10,7 +10,7 @@ public class MapBaiduConfig {
 	
 	
 	// KEY
-	public static final String KEY = "g7tkePeHXjzf21yTiZzMDohM0C7Fewvy";
+	public static final String KEY = "****";
 
 	// 地理编码
 	public static final String MAP_GEOCODER_URL = "http://api.map.baidu.com/geocoder/v2/";
