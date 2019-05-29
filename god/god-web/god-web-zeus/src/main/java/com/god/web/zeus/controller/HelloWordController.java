@@ -20,7 +20,14 @@ public class HelloWordController {
     @ResponseBody
     public String get(HttpServletRequest request){
 		
-        return "你好：abc";
+        return "你好：get";
+    }
+	
+	@RequestMapping(value="/post")
+    @ResponseBody
+    public String post(HttpServletRequest request){
+		
+        return "你好：post";
     }
 	
 }

@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.god.dao.base.jdbc.UserJDBC;
-
-
-
 public class HelloServlet extends HttpServlet{
 
 	final static  Logger logger  =  LoggerFactory.getLogger(HelloServlet.class );
@@ -34,9 +30,7 @@ public class HelloServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		logger.info("HttpServlet---service------");
 		resp.setContentType("text/html; charset=utf-8");
-		UserJDBC userJDBC = new UserJDBC();
-		String name = userJDBC.getName();
-		resp.getWriter().print("HelloServlet" + "---你好---" + name);
+		resp.getWriter().print("HelloServlet" + "---你好---");
 		// super.service(req, resp);
 	}
 	
@@ -57,8 +51,6 @@ public class HelloServlet extends HttpServlet{
 		logger.info("HttpServlet---doPost------");
 		// super.doPost(req, resp);
 	}
-	
-	
 	
 	/**
 	 * 销毁
