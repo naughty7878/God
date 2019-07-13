@@ -1,5 +1,7 @@
 package com.god.common.bean;
 
+import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Map;
  * @date 2018-11-15 00:40:43
  *
  */
-public class PageRequest {
+public class PageRequest implements Serializable{
 
 	private static final Integer DEFAULT_PAGE_CURRENT = 1;
 	private static final Integer DEFAULT_PAGE_SIZE = 20;
@@ -17,7 +19,7 @@ public class PageRequest {
 	/**
 	 * 当前页号
 	 */
-	private int pageNo = DEFAULT_PAGE_CURRENT;
+	private int pageNum = DEFAULT_PAGE_CURRENT;
 	/**
 	 * 页尺寸(大小)
 	 */
@@ -26,22 +28,22 @@ public class PageRequest {
 	/**
 	 * 排序规则
 	 */
-	private Map<String, String> sortRules;
+	private List<SortRule> sortRules;
 
 	public PageRequest() {
 	}
 
 	public PageRequest(int pageNumber, int pageSize) {
-		this.pageNo = pageNumber;
+		this.pageNum = pageNumber;
 		this.pageSize = pageSize;
 	}
 
-	public int getPageNo() {
-		return pageNo <= 0 ? DEFAULT_PAGE_CURRENT : pageNo;
+	public int getPageNum() {
+		return pageNum <= 0 ? DEFAULT_PAGE_CURRENT : pageNum;
 	}
 
-	public void setPageNo(int pageNumber) {
-		this.pageNo = pageNumber;
+	public void setPageNum(int pageNumber) {
+		this.pageNum = pageNumber;
 	}
 
 	public int getPageSize() {
@@ -52,12 +54,13 @@ public class PageRequest {
 		this.pageSize = pageSize;
 	}
 
-	public Map<String, String> getSortRules() {
+	public List<SortRule> getSortRules() {
 		return sortRules;
 	}
 
-	public void setSortRules(Map<String, String> sortRules) {
+	public void setSortRules(List<SortRule> sortRules) {
 		this.sortRules = sortRules;
 	}
 
+	
 }

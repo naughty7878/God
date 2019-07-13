@@ -1,11 +1,13 @@
 package com.god.common.bean;
 
+import java.io.Serializable;
+
 /***
  * 基本输出结果
  * 
  * @param <T>
  */
-public class BaseOutput<T> {
+public class BaseOutput<T> implements Serializable{
 
 	/**
 	 * 成功返回

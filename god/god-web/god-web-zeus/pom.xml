@@ -11,19 +11,37 @@
 	</parent>
 	<artifactId>god-web-zeus</artifactId>
 	<packaging>war</packaging>
-	
+
 	<dependencies>
 		<!-- god -->
 		<dependency>
 			<groupId>com.god</groupId>
-			<artifactId>god-dao-base</artifactId>
+			<artifactId>god-service</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.god</groupId>
+			<artifactId>god-manager-baidu</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.god</groupId>
+			<artifactId>god-dao</artifactId>
+		</dependency>
+
+		
+
+		<!-- jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.god</groupId>
-			<artifactId>god-service-base</artifactId>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
 		</dependency>
-		
+
 	</dependencies>
 	<build>
 		<finalName>zeus</finalName>
