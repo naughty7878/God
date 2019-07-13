@@ -42,6 +42,16 @@
 			<artifactId>spring-aop</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+
 		<!-- Spring WEB MVC 模块 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -107,6 +117,17 @@
 		</dependency>
 
 
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+
+		<!-- JSP -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+		</dependency>
 
 		<!-- log -->
 		<!-- logbakc -->
@@ -133,17 +154,11 @@
 			<artifactId>logback-access</artifactId>
 		</dependency>
 
-		<!-- Servlet -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<groupId>org.logback-extensions</groupId>
+			<artifactId>logback-ext-spring</artifactId>
 		</dependency>
 
-		<!-- JSP -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

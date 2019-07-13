@@ -1,11 +1,12 @@
 package com.god.common.bean;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * 基本输入参数
  */
-public class BaseInput<T> {
+public class BaseInput<T> implements Serializable{
 
 	/**
 	 * 泛型数据
