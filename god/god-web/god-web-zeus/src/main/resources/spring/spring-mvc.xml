@@ -53,8 +53,6 @@
 	</mvc:interceptors>
 	
 	<!-- 放在mvc配置中，才能对controller生效 -->
-	<!-- 扫描aop，该类对应自己定义的注解类-->
-    <context:component-scan base-package="com.god.web.zeus.interceptor" />
     <!--激活自动代理功能，启动对AspectJ注解的支持 -->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     
